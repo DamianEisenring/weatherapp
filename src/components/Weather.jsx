@@ -21,7 +21,7 @@ const Weather = () => {
       }
       
     
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`
+      const apiUrl = `https://api.openweathermap.org/data/2.5/YOUR_API_KEY`
     
       const searchLocation = async (event) => {
         if (event.key === 'Enter') {
