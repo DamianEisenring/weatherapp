@@ -9,12 +9,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCKbxHcmFS6lEHL9QOQ1PvZCeZ-86by13s",
-  authDomain: "wetterappcool.firebaseapp.com",
-  projectId: "wetterappcool",
-  storageBucket: "wetterappcool.appspot.com",
-  messagingSenderId: "573801486915",
-  appId: "1:573801486915:web:035338a3642ff7426912f6"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGS_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
