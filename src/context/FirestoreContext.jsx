@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useAuth } from './FirebaseContext'; 
 import { initializeApp } from 'firebase/app';
 //
-import { getFirestore, collection, addDoc, query, where, onSnapshot, deleteDoc, doc } from 'firebase/firestore'; 
+  import { getFirestore, collection, addDoc, query, where, onSnapshot, deleteDoc, doc } from 'firebase/firestore'; 
 import { firebaseConfig } from '../config/Firebase'; 
 
 const FirestoreContext = createContext();
@@ -12,7 +12,8 @@ export const useFirestore = () => {
   return useContext(FirestoreContext);
 };
 
-export const FirestoreProvider = ({ children }) => {
+export const FirestoreProvider = ({ children
+}) => {
   const { user } = useAuth();
   const [favorites, setFavorites] = useState([]);
   const app = initializeApp(firebaseConfig);

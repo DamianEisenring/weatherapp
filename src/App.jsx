@@ -1,18 +1,20 @@
-import React from 'react';
-import Weather from './components/Weather';
-import FavoritePlaces from './components/favoritePlaces';
-import { useAuth } from './context/FirebaseContext';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FirestoreProvider } from './context/FirestoreContext';
+import React from "react";
+import Weather from "./components/Weather";
+import FavoritePlaces from "./components/FavoritePlaces";
+import { useAuth } from "./context/FirebaseContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FirestoreProvider } from "./context/FirestoreContext";
+import LoginPopUp from './components/LoginPopUp'
+
+
+
 
 function App() {
   const { user, googleLogin } = useAuth();
 
   const Login = () => (
     <div className="app">
-      <button id="login" onClick={googleLogin}>
-        Sign In
-      </button>
+      <LoginPopUp/>
     </div>
   );
 
@@ -20,17 +22,7 @@ function App() {
     <FirestoreProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/main" element={user ? <Weather /> : <Login />} />
-          <Route
-            path="/favorite-places"
-            element={
-              user ? (
-                <FavoritePlaces />
-              ) : (
-                <Login />
-              )
-            }
-          />
+          <Route path="" element={user ? <Weather /> : <Login />} />
         </Routes>
       </BrowserRouter>
     </FirestoreProvider>

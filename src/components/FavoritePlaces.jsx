@@ -1,6 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useFirestore } from '../context/FirestoreContext';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useFirestore } from "../context/FirestoreContext";
+import { useNavigate } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+
+// Import of all the weather icons
+import { TiWeatherCloudy } from "react-icons/ti";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { TiWeatherSunny } from "react-icons/ti";
+import { TiWeatherShower } from "react-icons/ti";
+import { TiWeatherDownpour } from "react-icons/ti";
+import { TiWeatherStormy } from "react-icons/ti";
+import { TiWeatherSnow } from "react-icons/ti";
+import { RiMistFill } from "react-icons/ri";
 
 const FavoritePlaces = () => {
   const { favorites, deleteFavorite } = useFirestore();
@@ -30,7 +41,7 @@ const FavoritePlaces = () => {
   }, [favorites]);
 
   const navigateToMain = () => {
-    navigate('/main');
+    navigate("/");
   };
 
   const handleDeleteFavorite = (index) => {
@@ -38,17 +49,43 @@ const FavoritePlaces = () => {
     deleteFavorite(favoriteToDelete.id);
   };
 
+  const getWeatherIcon = (description) => {
+    switch (description) {
+      case "Clouds":
+        return <TiWeatherCloudy />;
+      case "Clear":
+        return <TiWeatherSunny />;
+      case "Partly Cloudy":
+        return <TiWeatherPartlySunny />;
+      case "Showers":
+        return <TiWeatherShower />;
+      case "Rain":
+        return <TiWeatherDownpour />;
+      case "Thunderstorm":
+        return <TiWeatherStormy />;
+      case "Snow":
+        return <TiWeatherSnow />;
+      case "Mist":
+        return <RiMistFill />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className="app">
+    <div>
       <h1>Favorite Places</h1>
-      <button onClick={navigateToMain}>Main</button>
       <ul>
         {weatherData.map((place, index) => (
           <li key={index}>
-            <p>Name: {place.name}</p>
-            <p>Temperature: {place.temp}°C</p>
-            <p>Description: {place.description}</p>
-            <button onClick={() => handleDeleteFavorite(index)}>Delete</button>
+            <p>{place.name}</p>
+            <p>{Math.round(place.temp)}°C</p>
+            <p className="description">{getWeatherIcon(place.description)}</p> 
+            <p>{place.description}</p>
+            <MdDelete
+              className="delete_button"
+              onClick={() => handleDeleteFavorite(index)}
+            />
           </li>
         ))}
       </ul>

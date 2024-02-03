@@ -1,7 +1,8 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 p {
   font-size: 25px;
@@ -10,45 +11,58 @@ p {
 h1 {
   font-size: 50px;
 }
-#login{
+
+#login {
   text-align: center;
 }
-  .app {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #f8f8f8;
-  }
-  .app:before {
-    content: "";
-    background: url("./images/clouds.jpg") no-repeat center center/cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f8f8f8;
+  position: relative;
+}
+
+.app:before {
+  content: "";
+  background: #2a2b2a;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  width: 100%;
 }
 
 #search {
-  width: 15%; 
+  text-align: center;
+  margin-right: 10px;
 }
 
-#logOut,
+#logOut {
+  margin-left: 33%;
+}
 #favoritePlace {
   margin-left: 10px;
 }
+
 button {
   background-color: rgba(0, 0, 0, 0.4);
   color: #f8f8f8;
   border-radius: 20px;
+  margin: 0; /* Remove default margin */
 }
 
 .app input {
@@ -58,6 +72,8 @@ button {
   border: 1px solid black;
   background: rgba(0, 0, 0, 0.4);
   color: #f8f8f8;
+  width: 100%; /* Take the full width */
+  margin-bottom: 10px; /* Add margin for spacing */
 }
 
 ::placeholder {
@@ -67,24 +83,58 @@ button {
 .container {
   text-align: center;
   padding: 0 1rem;
-  position: relative;
-  top: 10%;
-}
-.container .bottom {
-  justify-content: space-evenly;
-  position: fixed;
-  bottom: 30px;
-  left: 35%;
   display: flex;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 490px;
-  height: 8c0px;
-  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
-.bold {
-  font-weight: 700;
+.container .top {
+  margin-top: 100px;
 }
-.favoritePlace {
-  margin: 10px;
+
+.container .top,
+.container .bottom {
+  width: 100%;
+  max-width: 800px; /* Set a maximum width for better readability */
+}
+
+.container .bottom {
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 10px;
+  margin-top: auto;
+  width: 150%;
+  margin-bottom: 20px;
+}
+
+.container .bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container .bottom ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: auto;
+}
+
+.container .bottom ul li p {
+  margin-left: 10px;
+  font-size: 25px;
+}
+.container .bottom ul li .description {
+  font-size: 30px;
+}
+.container .top .description .description-icon {
+  font-size: 70px;
+}
+.container .bottom .delete_button {
+  margin-left: 20px;
+  font-size: 20px;
 }
